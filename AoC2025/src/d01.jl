@@ -109,8 +109,11 @@ function rotate_incrementally!(D::Dial, strs::Vector{<:AbstractString})
 end
 
 
-export Day01
+##############################################################################
+### Day's Function
+##############################################################################
 
+export Day01
 function Day01()
     raw_data = input_data(1) 
     data = split(raw_data, '\n')
