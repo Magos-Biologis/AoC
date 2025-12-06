@@ -1,5 +1,6 @@
 
 
+
 ##############################################################################
 ### PART 1 
 ##############################################################################
@@ -12,9 +13,9 @@
 ### Day's Function
 ##############################################################################
 
-export Day03
-function Day03()
-    data = input_data(3) 
+export Day07
+function Day07()
+    data = input_data(7) 
     parsed_data = parse_data(data)
 
     val1_array = check_range(parsed_data)
