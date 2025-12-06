@@ -73,10 +73,6 @@ end
 
 function k_largest(str::AbstractString; k::Int = 2)
     
-    if isempty(str)
-        return "0"
-    end
-    
     strs = split(str, "")
     vals = parse.(Int, strs)
     cartesian = [(i, vals[i]) for i in eachindex(vals)]
@@ -92,9 +88,13 @@ function k_largest(str::AbstractString; k::Int = 2)
         push!(maxs, cartesian[ind[1]])
     end
     
+    # Because each item in the output vector is an ordered pair
+    # of the position and the value, I only need to sort by the first
+    # element to concatenate them in the right order
     sort!(maxs, by=first)
-    return *(["$(last(maxs[i]))" for i in eachindex(maxs)]...) 
+    return reduce(*, ["$(max)" for max in last.(maxs)]) 
 end
+
 
 function k_largest(strs::Vector{<:AbstractString}; kwargs...)
     out = AbstractString[]
@@ -104,9 +104,12 @@ function k_largest(strs::Vector{<:AbstractString}; kwargs...)
     return parse.(Int,out)
 end
 
+
+# This was useful while testing
 @inline function k_largest(n::Int; kwargs...)
     k_largest(string(n); kwargs...)
 end
+
 
 ##############################################################################
 ### Day's Function
@@ -117,7 +120,7 @@ function Day03()
     data = input_data(3) 
     parsed_data = split(data, '\n')
 
-    val1_array = two_largest(parsed_data)
+    val1_array = k_largest(parsed_data; k=2)
     println("Answer 1: $(sum(val1_array))")
 
     val2_array = k_largest(parsed_data; k=12)
