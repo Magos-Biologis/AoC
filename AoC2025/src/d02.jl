@@ -94,6 +94,7 @@ end
 
 export Day02
 function Day02()
+    # using the input_data from from common.jl
     data = input_data(2) 
     parsed_data = parse_data(data)
 

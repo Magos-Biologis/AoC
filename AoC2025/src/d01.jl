@@ -115,6 +115,7 @@ end
 
 export Day01
 function Day01()
+    # using the input_data from from common.jl
     raw_data = input_data(1) 
     data = split(raw_data, '\n')
     

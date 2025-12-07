@@ -107,6 +107,7 @@ end
 
 export Day06
 function Day06()
+    # using the input_data from from common.jl
     data = input_data(6) 
 
     day1_problems = identify_problems(data)
@@ -123,4 +124,3 @@ end
 # too high 28246094698613,
 # Oh, I overcomplicated it, I didn't need to add zeroes at any point
 # ints = parse.(Int, replace.(vals, ' ' => '0') )
-#

@@ -117,6 +117,7 @@ end
 
 export Day03
 function Day03()
+    # using the input_data from from common.jl
     data = input_data(3) 
     parsed_data = split(data, '\n')
 
