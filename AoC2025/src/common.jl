@@ -21,11 +21,26 @@ end
 
 
 
-
 const LetterType = Union{C,S} where {C<:AbstractChar, S<:AbstractString}
 
 function Base.parse(::Type{T}, s::AbstractString; div::LetterType = '-') where T<:UnitRange
     a, b = parse.(Int, split(s, div))
     return a:b
+end
+
+
+
+export strings_to_grid
+
+"""
+A few times now, the question seems to hinge on the idea of turning
+the string into some NxM board, so I may as well generalize this function for 
+the sake of efficiency
+"""
+function strings_to_grid(strs::Vector{T}) where T<:AbstractString
+    chars = map( split.(strs, "") ) do str_arr
+        only.(str_arr)
+    end
+    char_matrix = vcat( reshape.(chars, 1, :)... )
 end
 

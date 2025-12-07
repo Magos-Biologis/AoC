@@ -16,6 +16,7 @@ include("d03.jl")
 include("d04.jl")
 include("d05.jl")
 include("d06.jl")
+include("d07.jl")
 
 
 
